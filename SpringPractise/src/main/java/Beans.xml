@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <import resource="MoreBeans.xml"/>
+   
+   <bean id = "helloWorld" class = "com.lessons.spring.core.HelloWorld">
+   		<property name = "message" value = "Hello World !!!"/>  
+   </bean>
+   
+   <bean id = "hiBean" class = "com.lessons.spring.core.BeanConstructor">
+   		<constructor-arg type="java.lang.String" value="Hi Mr.Bean...." />
+  	</bean>
+   
+	<bean id = "beanScope" class = "com.lessons.spring.core.BeanScope" scope="prototype">
+   	</bean>
+   	
+   	<bean id = "beanlife" class = "com.lessons.spring.core.BeanLifeCycle" init-method="init" destroy-method="destroy">
+   		<property name = "message" value = "Mr. Bean Life !!!"/>  
+   </bean>
+   
+   <!--  <bean  class = "com.lessons.spring.core.BeanLifeCyclePostProcess"/> -->
+   <bean id = "textEditor" class = "com.lessons.spring.core.InnerBeanTextEditor">
+   		<property name = "spellChecker" >  
+   		<bean id="spellchecker" class = "com.lessons.spring.core.InnerBeanSpellChecker"/>
+   		</property>
+   </bean>
+   
+   
+</beans>
